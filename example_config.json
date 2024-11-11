@@ -1,0 +1,7 @@
+{
+    "label_studio_key": "abcdef1234",
+    "label_studio_url": "https://labeler.e4e.ucsd.edu",
+    "label_studio_project_id": 10,
+    "slack_client_secret": "xoxb-abcdef1234",
+    "slack_channel_id": "abcdef1234"
+}
