@@ -17,6 +17,7 @@ repository = 'https://github.com/UCSD-E4E/label-studio-slack-reporter'
 python = "^3.12"
 label-studio-sdk = "^1.0.7"
 slack-sdk = "^3.33.3"
+platformdirs = "^4.3.6"
 
 [tool.poetry.group.dev.dependencies]
 pylint = "^3.2.7"

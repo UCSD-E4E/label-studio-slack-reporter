@@ -5,19 +5,16 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Run Module",
-            "type": "python",
+            "name": "Run Launch",
+            "type": "debugpy",
             "request": "launch",
-            "module": "examplePackage.exampleModule",
-            "justMyCode": true
-        },
-        {
-            "name": "Python: Run File",
-            "type": "python",
-            "request": "launch",
-            "program": "${workspaceFolder}/examplePackage/exampleModule.py",
+            "program": "${workspaceFolder}/label_studio_slack_reporter/main.py",
             "console": "integratedTerminal",
-            "justMyCode": true
+            "justMyCode": true,
+            "args": [
+                "--config",
+                "${workspaceFolder}/config.json"
+            ]
         }
     ]
 }
