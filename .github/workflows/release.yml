@@ -1,9 +1,14 @@
 name: Semantic Release
 
 on:
-  push:
+  workflow_run:
+    workflows:
+      - Pylint
+      - PyTest
     branches:
       - main
+    types: 
+      - completed
 
 jobs:
   release:
@@ -21,4 +26,5 @@ jobs:
     - name: Python Semantic Release
       uses: python-semantic-release/python-semantic-release@master
       with:
+        # This might need to be changed to the E4E Releaser PAT
         github_token: ${{ secrets.GITHUB_TOKEN }}
