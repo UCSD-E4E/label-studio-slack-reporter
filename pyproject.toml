@@ -27,7 +27,7 @@ autopep8 = "^2.3.1"
 coverage = "^7.6.1"
 
 [tool.poetry.scripts]
-ExamplePythonConsoleScript = 'label_studio_slack_reporter.main:main'
+label_studio_slack_reporter = 'label_studio_slack_reporter.main:main'
 
 [tool.semantic_release]
 version_variables = ["label_studio_slack_reporter/__init__.py:__version__"]
