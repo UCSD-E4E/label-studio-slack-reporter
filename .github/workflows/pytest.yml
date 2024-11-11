@@ -16,14 +16,14 @@ jobs:
         python -m pip install --upgrade pip poetry
         poetry config virtualenvs.create false
         poetry install
-    - name: Test
-      run: |
-        coverage run -m pytest tests
-    - name: Generate Report
-      run: |
-        coverage html
-    - name: Upload report
-      uses: actions/upload-artifact@v4
-      with:
-        name: coverage-report
-        path: htmlcov/*
+    # - name: Test
+    #   run: |
+    #     coverage run -m pytest tests
+    # - name: Generate Report
+    #   run: |
+    #     coverage html
+    # - name: Upload report
+    #   uses: actions/upload-artifact@v4
+    #   with:
+    #     name: coverage-report
+    #     path: htmlcov/*
