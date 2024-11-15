@@ -12,7 +12,7 @@ from label_studio_sdk.types import BaseUser
 from label_studio_sdk.projects.client_ext import ProjectExt
 from slack_sdk import WebClient
 
-
+# pylint: disable=too-many-locals
 def main() -> None:
     """Main Entry Point
     """
@@ -44,8 +44,8 @@ def main() -> None:
     recent_annotations, estimated_days = calculate_recent_annotations(
         timestamps=annotations_timestamp, total_tasks=project_info.task_number, days=args.days)
 
-    message = generate_message(user_list, project_info, annotations_count, 
-                               recent_annotations, estimated_days, args.days) 
+    message = generate_message(user_list, project_info, annotations_count,
+                               recent_annotations, estimated_days, args.days)
 
     slack_client = WebClient(token=config_params['slack_client_secret'])
     slack_client.chat_postMessage(
@@ -79,10 +79,9 @@ def calculate_recent_annotations(timestamps: Dict[int, List[datetime]],
         estimated_days = (total_tasks - total_annotations) / (relative_total / days)
     else:
         estimated_days = float('inf')
-    
     return relative_total, estimated_days
-    
 
+# pylint: disable=too-many-arguments, too-many-positional-arguments
 def generate_message(user_list: List[BaseUser],
                      project_info: ProjectExt,
                      annotations_count: Dict[int, int],
