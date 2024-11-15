@@ -4,7 +4,8 @@ import argparse
 import json
 from pathlib import Path
 from tempfile import TemporaryDirectory
-from typing import Dict, List
+from typing import Dict, List, Tuple
+from datetime import datetime, timedelta
 
 from label_studio_sdk.client import LabelStudio
 from label_studio_sdk.types import BaseUser
@@ -17,7 +18,7 @@ def main() -> None:
     """
     parser = argparse.ArgumentParser()
     parser.add_argument('-c', '--config', type=Path)
-
+    parser.add_argument('-d', '--days', type=int, default=1)
     args = parser.parse_args()
 
     with open(args.config, 'r', encoding='utf-8') as handle:
@@ -32,11 +33,19 @@ def main() -> None:
     project_info = ls_client.projects.get(
         id=project_id)
     annotations_count: Dict[int, int] = {user.id: 0 for user in user_list}
+    annotations_timestamp: Dict[int, List[datetime]] = {user.id: [] for user in user_list}
     for task in export:
         for annotation in task['annotations']:
             annotations_count[annotation['completed_by']] += 1
+            annotation_time = datetime.strptime(
+                annotation['created_at'].rstrip('Z'), '%Y-%m-%dT%H:%M:%S.%f')
+            annotations_timestamp[annotation['completed_by']].append(annotation_time)
 
-    message = generate_message(user_list, project_info, annotations_count)
+    recent_annotations, estimated_days = calculate_recent_annotations(
+        timestamps=annotations_timestamp, total_tasks=project_info.task_number, days=args.days)
+
+    message = generate_message(user_list, project_info, annotations_count, 
+                               recent_annotations, estimated_days, args.days) 
 
     slack_client = WebClient(token=config_params['slack_client_secret'])
     slack_client.chat_postMessage(
@@ -44,16 +53,51 @@ def main() -> None:
         text=message
     )
 
+def calculate_recent_annotations(timestamps: Dict[int, List[datetime]],
+                                 total_tasks: int,
+                                 days: int) -> Tuple[int, float]:
+    """Calculates recent annotations
+
+    Args:
+        timestamps (Dict[int, List[datetime]]): List of annotation timestamps 
+        total_tasks (int): Number of tasks in a project
+        days (int): Number of days considered recent
+
+    Returns:
+        int: annotations made in the past N days
+        float: estimated days to completion
+    """
+    now = datetime.now()
+    total_annotations = sum(len(t) for t in timestamps.values())
+    relative_annotations = {
+        user_id: sum(1 for timestamp in timestamps if now - timestamp <= timedelta(days))
+        for user_id, timestamps in timestamps.items()
+    }
+
+    relative_total = sum(relative_annotations.values())
+    if relative_total > 0:
+        estimated_days = (total_tasks - total_annotations) / (relative_total / days)
+    else:
+        estimated_days = float('inf')
+    
+    return relative_total, estimated_days
+    
 
 def generate_message(user_list: List[BaseUser],
                      project_info: ProjectExt,
-                     annotations_count: Dict[int, int]) -> str:
+                     annotations_count: Dict[int, int],
+                     recent_annotations: int,
+                     estimated_days: float,
+                     days: int) -> str:
     """Generates message
 
     Args:
         user_list (List[BaseUser]): List of users
         project_info (ProjectExt): Project info
         annotations_count (Dict[int, int]): List of annotations
+        recent_annotations (int): Number of annotations made in the past day(s)
+        estimated_days (float): Number of days to complete the remaining annotations
+        days (int): Number of days considered recent
 
     Returns:
         str: Formatted message
@@ -66,7 +110,9 @@ def generate_message(user_list: List[BaseUser],
             count = annotations_count[user.id]
         message += f'{user.email}: {count}\n'
 
-    message += f'Total: {sum(annotations_count.values())}'
+    message += f'Total: {sum(annotations_count.values())}\n'
+    message += f'Estimated time to completion: {estimated_days:.1f} days\n'
+    message += f'{recent_annotations} annotations were made in the last {days * 24} hours'
     return message
 
 
