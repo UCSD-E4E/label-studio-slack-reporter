@@ -1,0 +1,10 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Semantic Release",
+            "type": "shell",
+            "command": "semantic-release version --push",
+        }
+    ]
+}
