@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import datetime as dt
 import logging
 import time
 from pathlib import Path
@@ -13,6 +14,7 @@ from typing import Dict, List
 import pycron
 from prometheus_client import start_http_server
 from tomlkit import parse
+from tzlocal import get_localzone
 
 from label_studio_slack_reporter.config import configure_logging
 from label_studio_slack_reporter.label_studio import Reporter
@@ -72,6 +74,9 @@ class Service:
         )
 
     def __configure_schedule(self):
+        current_tz = get_localzone()
+        now = dt.datetime.now(current_tz)
+        self.__log.info('Current time %s', now.isoformat())
         for output_unit, output_config in self.__config['output'].items():
             if 'schedule' not in output_config:
                 raise KeyError(f'Expected schedule in output.{output_unit}')

@@ -1,0 +1,84 @@
+2024-12-14T07:30:24.105Z - root - INFO - Log path: volumes\logs
+2024-12-14T07:30:24.105Z - root - INFO - Data path: volumes\data
+2024-12-14T07:30:24.105Z - root - INFO - Cache path: volumes\cache
+2024-12-14T07:30:24.752Z - Service - INFO - Running
+2024-12-14T07:33:58.411Z - root - INFO - Log path: volumes\logs
+2024-12-14T07:33:58.411Z - root - INFO - Data path: volumes\data
+2024-12-14T07:33:58.411Z - root - INFO - Cache path: volumes\cache
+2024-12-14T07:34:38.145Z - root - INFO - Log path: volumes\logs
+2024-12-14T07:34:38.145Z - root - INFO - Data path: volumes\data
+2024-12-14T07:34:38.145Z - root - INFO - Cache path: volumes\cache
+2024-12-14T07:35:15.728Z - root - INFO - Log path: volumes\logs
+2024-12-14T07:35:15.728Z - root - INFO - Data path: volumes\data
+2024-12-14T07:35:15.741Z - root - INFO - Cache path: volumes\cache
+2024-12-14T07:35:17.166Z - Service - INFO - Running
+2024-12-14T07:45:37.348Z - root - INFO - Log path: volumes\logs
+2024-12-14T07:45:37.348Z - root - INFO - Data path: volumes\data
+2024-12-14T07:45:37.348Z - root - INFO - Cache path: volumes\cache
+2024-12-14T07:45:37.886Z - httpcore.connection - DEBUG - connect_tcp.started host='labeler.e4e.ucsd.edu' port=443 local_address=None timeout=60 socket_options=None
+2024-12-14T07:45:37.973Z - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x00000233B560E330>
+2024-12-14T07:45:37.974Z - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x00000233B562EA50> server_hostname='labeler.e4e.ucsd.edu' timeout=60
+2024-12-14T07:45:38.003Z - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x00000233B55F4B90>
+2024-12-14T07:45:38.003Z - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'GET']>
+2024-12-14T07:45:38.006Z - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-12-14T07:45:38.007Z - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'GET']>
+2024-12-14T07:45:38.007Z - httpcore.http11 - DEBUG - send_request_body.complete
+2024-12-14T07:45:38.008Z - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'GET']>
+2024-12-14T07:46:01.111Z - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Allow', b'GET, HEAD, OPTIONS'), (b'Alt-Svc', b'h3=":443"; ma=2592000'), (b'Content-Disposition', b'attachment; filename="project-10-at-2024-12-14-07-46-eabccfc4.json"'), (b'Content-Language', b'en-us'), (b'Content-Length', b'19278894'), (b'Content-Security-Policy-Report-Only', b"default-src 'self' 'report-sample'; connect-src 'self' 'report-sample' https://*.google-analytics.com https://*.analytics.google.com https://analytics.google.com https://*.googletagmanager.com https://*.g.doubleclick.net https://*.ingest.sentry.io; script-src 'self' 'report-sample' 'unsafe-inline' 'unsafe-eval' blob: browser.sentry-cdn.com https://*.googletagmanager.com; img-src 'self' 'report-sample' data: https://*.google-analytics.com https://*.googletagmanager.com https://*.google.com; style-src 'self' 'report-sample' 'unsafe-inline'"), (b'Content-Type', b'application/.json'), (b'Date', b'Sat, 14 Dec 2024 07:46:00 GMT'), (b'Filename', b'project-10-at-2024-12-14-07-46-eabccfc4.json'), (b'Referrer-Policy', b'same-origin'), (b'Server', b'Caddy'), (b'Server', b'WSGIServer/0.2 CPython/3.10.12'), (b'Set-Cookie', b'sessionid=eyJ1aWQiOiJjYjk2ODkxYi04YjRjLTQxNGItYWFlMS0xYzI1YWIyZmYyYzEiLCJvcmdhbml6YXRpb25fcGsiOjF9:1tMMqe:WhO5I-QSHOyrClEkLymDwTYGfo5RMq6OauEzYEufTKY; expires=Sat, 28 Dec 2024 07:46:00 GMT; HttpOnly; Max-Age=1209600; Path=/; SameSite=Lax'), (b'Vary', b'Accept-Language, Cookie, Origin'), (b'X-Content-Type-Options', b'nosniff')])
+2024-12-14T07:46:01.116Z - httpx - INFO - HTTP Request: GET https://labeler.e4e.ucsd.edu/api/projects/10/export?download_resources=false&download_all_tasks=false&export_type=JSON "HTTP/1.1 200 OK"
+2024-12-14T07:46:01.116Z - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'GET']>
+2024-12-14T07:46:03.808Z - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-12-14T07:46:03.808Z - httpcore.http11 - DEBUG - response_closed.started
+2024-12-14T07:46:03.808Z - httpcore.http11 - DEBUG - response_closed.complete
+2024-12-14T07:51:21.884Z - root - INFO - Log path: volumes\logs
+2024-12-14T07:51:21.884Z - root - INFO - Data path: volumes\data
+2024-12-14T07:51:21.884Z - root - INFO - Cache path: volumes\cache
+2024-12-14T07:51:40.847Z - httpcore.connection - DEBUG - connect_tcp.started host='labeler.e4e.ucsd.edu' port=443 local_address=None timeout=60 socket_options=None
+2024-12-14T07:51:40.918Z - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001A3C2A20BC0>
+2024-12-14T07:51:40.919Z - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x000001A3C29E1950> server_hostname='labeler.e4e.ucsd.edu' timeout=60
+2024-12-14T07:51:40.949Z - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001A3C17A5370>
+2024-12-14T07:51:40.949Z - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'GET']>
+2024-12-14T07:51:40.950Z - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-12-14T07:51:40.951Z - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'GET']>
+2024-12-14T07:51:40.952Z - httpcore.http11 - DEBUG - send_request_body.complete
+2024-12-14T07:51:40.952Z - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'GET']>
+2024-12-14T07:52:44.148Z - root - INFO - Log path: volumes\logs
+2024-12-14T07:52:44.149Z - root - INFO - Data path: volumes\data
+2024-12-14T07:52:44.150Z - root - INFO - Cache path: volumes\cache
+2024-12-14T07:52:44.696Z - httpcore.connection - DEBUG - connect_tcp.started host='labeler.e4e.ucsd.edu' port=443 local_address=None timeout=60 socket_options=None
+2024-12-14T07:52:44.764Z - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000002C25DCE1BE0>
+2024-12-14T07:52:44.765Z - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x000002C25DC96AD0> server_hostname='labeler.e4e.ucsd.edu' timeout=60
+2024-12-14T07:52:44.788Z - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000002C25DCAE090>
+2024-12-14T07:52:44.788Z - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'GET']>
+2024-12-14T07:52:44.795Z - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-12-14T07:52:44.795Z - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'GET']>
+2024-12-14T07:52:44.796Z - httpcore.http11 - DEBUG - send_request_body.complete
+2024-12-14T07:52:44.797Z - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'GET']>
+2024-12-14T07:53:08.219Z - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Allow', b'GET, HEAD, OPTIONS'), (b'Alt-Svc', b'h3=":443"; ma=2592000'), (b'Content-Disposition', b'attachment; filename="project-10-at-2024-12-14-07-53-eabccfc4.json"'), (b'Content-Language', b'en-us'), (b'Content-Length', b'19278894'), (b'Content-Security-Policy-Report-Only', b"default-src 'self' 'report-sample'; connect-src 'self' 'report-sample' https://*.google-analytics.com https://*.analytics.google.com https://analytics.google.com https://*.googletagmanager.com https://*.g.doubleclick.net https://*.ingest.sentry.io; script-src 'self' 'report-sample' 'unsafe-inline' 'unsafe-eval' blob: browser.sentry-cdn.com https://*.googletagmanager.com; img-src 'self' 'report-sample' data: https://*.google-analytics.com https://*.googletagmanager.com https://*.google.com; style-src 'self' 'report-sample' 'unsafe-inline'"), (b'Content-Type', b'application/.json'), (b'Date', b'Sat, 14 Dec 2024 07:53:07 GMT'), (b'Filename', b'project-10-at-2024-12-14-07-53-eabccfc4.json'), (b'Referrer-Policy', b'same-origin'), (b'Server', b'Caddy'), (b'Server', b'WSGIServer/0.2 CPython/3.10.12'), (b'Set-Cookie', b'sessionid=eyJ1aWQiOiIxNDkwMDlhYS04OWE5LTQ5ZWMtYTBjZS1mMjBkMWFhMDU2NDIiLCJvcmdhbml6YXRpb25fcGsiOjF9:1tMMxX:vaE8naMtNhImLo5IxO5rcPQ8RCMun0gW9rdS3gkBiJw; expires=Sat, 28 Dec 2024 07:53:07 GMT; HttpOnly; Max-Age=1209600; Path=/; SameSite=Lax'), (b'Vary', b'Accept-Language, Cookie, Origin'), (b'X-Content-Type-Options', b'nosniff')])
+2024-12-14T07:53:08.235Z - httpx - INFO - HTTP Request: GET https://labeler.e4e.ucsd.edu/api/projects/10/export?download_resources=false&download_all_tasks=false&export_type=JSON "HTTP/1.1 200 OK"
+2024-12-14T07:53:08.235Z - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'GET']>
+2024-12-14T07:53:11.014Z - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-12-14T07:53:11.014Z - httpcore.http11 - DEBUG - response_closed.started
+2024-12-14T07:53:11.014Z - httpcore.http11 - DEBUG - response_closed.complete
+2024-12-14T07:53:11.319Z - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'GET']>
+2024-12-14T07:53:11.319Z - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-12-14T07:53:11.319Z - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'GET']>
+2024-12-14T07:53:11.319Z - httpcore.http11 - DEBUG - send_request_body.complete
+2024-12-14T07:53:11.319Z - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'GET']>
+2024-12-14T07:53:11.424Z - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Allow', b'GET, POST, HEAD'), (b'Alt-Svc', b'h3=":443"; ma=2592000'), (b'Content-Language', b'en-us'), (b'Content-Length', b'7156'), (b'Content-Security-Policy-Report-Only', b"default-src 'self' 'report-sample'; connect-src 'self' 'report-sample' https://*.google-analytics.com https://*.analytics.google.com https://analytics.google.com https://*.googletagmanager.com https://*.g.doubleclick.net https://*.ingest.sentry.io; script-src 'self' 'report-sample' 'unsafe-inline' 'unsafe-eval' blob: browser.sentry-cdn.com https://*.googletagmanager.com; img-src 'self' 'report-sample' data: https://*.google-analytics.com https://*.googletagmanager.com https://*.google.com; style-src 'self' 'report-sample' 'unsafe-inline'"), (b'Content-Type', b'application/json'), (b'Date', b'Sat, 14 Dec 2024 07:53:10 GMT'), (b'Referrer-Policy', b'same-origin'), (b'Server', b'Caddy'), (b'Server', b'WSGIServer/0.2 CPython/3.10.12'), (b'Set-Cookie', b'sessionid=eyJ1aWQiOiIxNDkwMDlhYS04OWE5LTQ5ZWMtYTBjZS1mMjBkMWFhMDU2NDIiLCJvcmdhbml6YXRpb25fcGsiOjF9:1tMMxa:y7vc_HdZynRUHUjnijbktOZAeBHXIx1_fVZzJZ4_Nqc; expires=Sat, 28 Dec 2024 07:53:10 GMT; HttpOnly; Max-Age=1209600; Path=/; SameSite=Lax'), (b'Vary', b'Accept-Language, Cookie, Origin'), (b'X-Content-Type-Options', b'nosniff')])
+2024-12-14T07:53:11.427Z - httpx - INFO - HTTP Request: GET https://labeler.e4e.ucsd.edu/api/users/ "HTTP/1.1 200 OK"
+2024-12-14T07:53:11.428Z - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'GET']>
+2024-12-14T07:53:11.429Z - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-12-14T07:53:11.431Z - httpcore.http11 - DEBUG - response_closed.started
+2024-12-14T07:53:11.431Z - httpcore.http11 - DEBUG - response_closed.complete
+2024-12-14T07:53:11.438Z - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'GET']>
+2024-12-14T07:53:11.440Z - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-12-14T07:53:11.441Z - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'GET']>
+2024-12-14T07:53:11.441Z - httpcore.http11 - DEBUG - send_request_body.complete
+2024-12-14T07:53:11.442Z - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'GET']>
+2024-12-14T07:53:11.652Z - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Allow', b'GET, PUT, PATCH, DELETE, HEAD, OPTIONS'), (b'Alt-Svc', b'h3=":443"; ma=2592000'), (b'Content-Language', b'en-us'), (b'Content-Length', b'2248'), (b'Content-Security-Policy-Report-Only', b"default-src 'self' 'report-sample'; connect-src 'self' 'report-sample' https://*.google-analytics.com https://*.analytics.google.com https://analytics.google.com https://*.googletagmanager.com https://*.g.doubleclick.net https://*.ingest.sentry.io; script-src 'self' 'report-sample' 'unsafe-inline' 'unsafe-eval' blob: browser.sentry-cdn.com https://*.googletagmanager.com; img-src 'self' 'report-sample' data: https://*.google-analytics.com https://*.googletagmanager.com https://*.google.com; style-src 'self' 'report-sample' 'unsafe-inline'"), (b'Content-Type', b'application/json'), (b'Date', b'Sat, 14 Dec 2024 07:53:10 GMT'), (b'Referrer-Policy', b'same-origin'), (b'Server', b'Caddy'), (b'Server', b'WSGIServer/0.2 CPython/3.10.12'), (b'Set-Cookie', b'sessionid=eyJ1aWQiOiIxNDkwMDlhYS04OWE5LTQ5ZWMtYTBjZS1mMjBkMWFhMDU2NDIiLCJvcmdhbml6YXRpb25fcGsiOjF9:1tMMxa:y7vc_HdZynRUHUjnijbktOZAeBHXIx1_fVZzJZ4_Nqc; expires=Sat, 28 Dec 2024 07:53:10 GMT; HttpOnly; Max-Age=1209600; Path=/; SameSite=Lax'), (b'Vary', b'Accept-Language, Cookie, Origin'), (b'X-Content-Type-Options', b'nosniff')])
+2024-12-14T07:53:11.655Z - httpx - INFO - HTTP Request: GET https://labeler.e4e.ucsd.edu/api/projects/10/ "HTTP/1.1 200 OK"
+2024-12-14T07:53:11.655Z - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'GET']>
+2024-12-14T07:53:11.656Z - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-12-14T07:53:11.656Z - httpcore.http11 - DEBUG - response_closed.started
+2024-12-14T07:53:11.656Z - httpcore.http11 - DEBUG - response_closed.complete
