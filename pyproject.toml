@@ -14,10 +14,13 @@ readme = "README.md"
 repository = 'https://github.com/UCSD-E4E/label-studio-slack-reporter'
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = ">=3.12,<3.13"
 label-studio-sdk = "^1.0.7"
 slack-sdk = "^3.33.3"
 platformdirs = "^4.3.6"
+tomlkit = "^0.13.2"
+pycron = "^3.1.1"
+prometheus-client = "^0.21.1"
 
 [tool.poetry.group.dev.dependencies]
 pylint = "^3.2.7"
@@ -27,6 +30,7 @@ autopep8 = "^2.3.1"
 coverage = "^7.6.1"
 
 [tool.poetry.scripts]
+label_studio_reporting_service = 'label_studio_slack_reporter.service:main'
 label_studio_slack_reporter = 'label_studio_slack_reporter.main:main'
 
 [tool.semantic_release]

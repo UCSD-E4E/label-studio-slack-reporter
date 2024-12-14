@@ -5,6 +5,17 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Debug Service",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "label_studio_slack_reporter.service",
+            "args": [
+                "--config",
+                "${workspaceFolder}/config.toml",
+                "--debug"
+            ]
+        },
+        {
             "name": "Run Launch",
             "type": "debugpy",
             "request": "launch",

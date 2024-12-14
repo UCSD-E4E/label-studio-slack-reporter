@@ -1,0 +1,12 @@
+[label_studio]
+key = "abcdef1234"
+url = "https://labeler.e4e.ucsd.edu"
+project_ids = [10]
+report_days = 1
+
+[output.slack]
+type = "slack"
+secret = "xoxb-abcdef1234"
+channel_id = "abcdef1234"
+project_ids = [10]
+schedule = "0 9 * * *"

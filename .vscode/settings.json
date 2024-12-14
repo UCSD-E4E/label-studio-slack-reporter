@@ -4,7 +4,7 @@
     ],
     "python.testing.unittestEnabled": false,
     "editor.rulers": [
-        100
+        80
     ],
     "python.testing.pytestEnabled": true,
     "editor.formatOnPaste": true,
