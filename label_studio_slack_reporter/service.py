@@ -146,7 +146,7 @@ def main():
     """Main entry point
     """
     parser = argparse.ArgumentParser()
-    parser.add_argument('--config', type=Path)
+    parser.add_argument('--config', type=Path, required=True)
     parser.add_argument('--debug', action='store_true')
 
     args = vars(parser.parse_args())
