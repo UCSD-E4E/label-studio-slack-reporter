@@ -143,7 +143,7 @@ class Reporter:
         Returns:
             str: Formatted message
         """
-        # pylint: disable=too-many-arguments
+        # pylint: disable=too-many-arguments,too-many-positional-arguments
         message = f'Results for {project_info.title}\n'
         for user in sorted(user_list, key=lambda x: annotations_count[x.id], reverse=True):
             if not user.id in annotations_count:

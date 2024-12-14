@@ -24,6 +24,7 @@ from label_studio_slack_reporter.output import AbstractOutput, SlackOutput
 class Service:
     """Main service
     """
+    # pylint: disable=too-many-instance-attributes
     OUTPUT_TYPE_MAPPING = {
         'slack': SlackOutput
     }

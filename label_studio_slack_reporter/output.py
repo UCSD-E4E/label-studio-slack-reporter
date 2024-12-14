@@ -9,11 +9,11 @@ class AbstractOutput(ABC):
     """Abstract Output Job
 
     """
-
+    # pylint: disable=too-few-public-methods
     def __init__(self,
                  schedule: str,
                  job_name: str,
-                 **kwargs):
+                 **_):
         self.schedule = schedule
         self.name = job_name
 
@@ -29,6 +29,10 @@ class AbstractOutput(ABC):
 
 
 class SlackOutput(AbstractOutput):
+    """Slack output
+    """
+    # pylint: disable=too-few-public-methods
+
     def __init__(self,
                  schedule: str,
                  job_name: str,
