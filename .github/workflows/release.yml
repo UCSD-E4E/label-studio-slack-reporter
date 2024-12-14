@@ -27,4 +27,4 @@ jobs:
       uses: python-semantic-release/python-semantic-release@master
       with:
         # This might need to be changed to the E4E Releaser PAT
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ secrets.RELEASER }}
