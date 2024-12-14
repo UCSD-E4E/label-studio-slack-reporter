@@ -35,6 +35,9 @@ class Service:
         self.stop_event = Event()
         self.__debug = debug
 
+        if not config.is_file():
+            raise ValueError('Config path is not a file!')
+
         with open(config, 'r', encoding='utf-8') as handle:
             self.__config = parse(handle.read())
 
