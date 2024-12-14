@@ -16,7 +16,8 @@ from tomlkit import parse
 
 from label_studio_slack_reporter.config import configure_logging
 from label_studio_slack_reporter.label_studio import Reporter
-from label_studio_slack_reporter.metrics import system_monitor_thread
+from label_studio_slack_reporter.metrics import (get_summary,
+                                                 system_monitor_thread)
 from label_studio_slack_reporter.output import AbstractOutput, SlackOutput
 
 
@@ -53,6 +54,19 @@ class Service:
         )
         self.__prometheus_port = int(self.__config['prometheus']['port'])
 
+        self.__report_timer = get_summary(
+            name='report_generation_duration',
+            documentation='Report generation duration',
+            unit='second'
+        )
+
+        self.__output_timer = get_summary(
+            name='output_duration',
+            documentation='Output generation duration',
+            unit='second',
+            labelnames=['job']
+        )
+
     def __configure_schedule(self):
         for output_unit, output_config in self.__config['output'].items():
             if 'schedule' not in output_config:
@@ -86,13 +100,15 @@ class Service:
                 jobs = self.__job_queue.get(timeout=5)
             except Empty:
                 continue
-            message = self.__reporter.get_report()
+            with self.__report_timer.time():
+                message = self.__reporter.get_report()
             for job in jobs:
                 try:
                     if not self.__debug:
-                        job.execute(message=message)
+                        with self.__output_timer.labels(job=job.name).time():
+                            job.execute(message=message)
                         self.__log.info('Executed %s', job.name)
-                except Exception:
+                except Exception:  # pylint: disable=broad-exception-caught
                     self.__log.exception('Failed to execute %s', job.name)
 
     def run(self):
@@ -110,6 +126,8 @@ class Service:
         self.__scheduler_thread.join()
 
     def scheduler(self):
+        """Scheduler thread
+        """
         while not self.stop_event.is_set():
             for job_cron, jobs in self.jobs.items():
                 if pycron.is_now(job_cron):
