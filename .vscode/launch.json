@@ -16,15 +16,13 @@
             ]
         },
         {
-            "name": "Run Launch",
+            "name": "Debug Reporter",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/label_studio_slack_reporter/main.py",
-            "console": "integratedTerminal",
-            "justMyCode": true,
+            "module": "label_studio_slack_reporter.main",
             "args": [
                 "--config",
-                "${workspaceFolder}/config.json"
+                "${workspaceFolder}/config.toml"
             ]
         }
     ]

@@ -42,10 +42,7 @@ class Reporter:
             download_all_tasks=False,
             download_resources=False
         )
-        with BytesIO() as buffer:
-            for blob in response:
-                buffer.write(blob)
-            export = json.load(buffer)
+        export = json.load(BytesIO(b''.join(response)))
         return export
 
     def get_report(self) -> str:
