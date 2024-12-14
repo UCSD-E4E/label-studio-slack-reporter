@@ -20,7 +20,7 @@ def get_log_path() -> Path:
         Path: Log directory
     """
     if IS_DOCKER:
-        log_path = Path('/app/logs')
+        log_path = Path('/e4e/logs')
     elif 'E4E_LOGS_DIR' in os.environ:
         log_path = Path(os.environ['E4E_LOGS_DIR'])
     else:
@@ -36,7 +36,7 @@ def get_data_path() -> Path:
         Path: Data directory
     """
     if IS_DOCKER:
-        data_path = Path('/app/data')
+        data_path = Path('/e4e/data')
     elif 'E4E_DATA_DIR' in os.environ:
         data_path = Path(os.environ['E4E_DATA_DIR'])
     else:
@@ -52,7 +52,7 @@ def get_cache_path() -> Path:
         Path: Cache path
     """
     if IS_DOCKER:
-        cache_path = Path('/app/cache')
+        cache_path = Path('/e4e/cache')
     elif 'E4E_CACHE_DIR' in os.environ:
         cache_path = Path(os.environ['E4E_CACHE_DIR'])
     else:
