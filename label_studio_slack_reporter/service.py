@@ -18,7 +18,7 @@ from tzlocal import get_localzone
 
 from label_studio_slack_reporter.config import configure_logging
 from label_studio_slack_reporter.label_studio import Reporter
-from label_studio_slack_reporter.metrics import (get_summary,
+from label_studio_slack_reporter.metrics import (get_summary, get_counter,
                                                  system_monitor_thread)
 from label_studio_slack_reporter.output import AbstractOutput, SlackOutput
 
@@ -73,6 +73,12 @@ class Service:
             labelnames=['job']
         )
 
+        get_counter(
+            name='job_execute_errors',
+            documentation='Job Execution error count',
+            labelnames=['job']
+        )
+
     def __configure_schedule(self):
         current_tz = get_localzone()
         now = dt.datetime.now(current_tz)
@@ -119,6 +125,8 @@ class Service:
                         self.__log.info('Executed %s', job.name)
                 except Exception:  # pylint: disable=broad-exception-caught
                     self.__log.exception('Failed to execute %s', job.name)
+                    get_counter('job_execute_errors').labels(
+                        job=job.name).inc()
 
     def run(self):
         """Main entry point

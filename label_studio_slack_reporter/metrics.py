@@ -5,8 +5,8 @@ from threading import Lock, Thread
 from time import sleep
 from typing import Dict, Iterable, List, Literal, Optional, Sequence, Union
 
-from prometheus_client import (REGISTRY, CollectorRegistry, Gauge, Histogram,
-                               Info, Summary)
+from prometheus_client import (REGISTRY, CollectorRegistry, Counter, Gauge,
+                               Histogram, Info, Summary)
 
 __all_gauges: Dict[str, Gauge] = {}
 __gauges_lock = Lock()
@@ -16,7 +16,33 @@ __all_summaries: Dict[str, Summary] = {}
 __summariess_lock = Lock()
 __all_histograms: Dict[str, Histogram] = {}
 __histograms_lock = Lock()
+__all_counters: Dict[str, Counter] = {}
+__counters_lock = Lock()
 
+
+def get_counter(name: str,
+                documentation: Optional[str] = None,
+                labelnames: Iterable[str] = (),
+                namespace: str = '',
+                subsystem: str = '',
+                unit: str = '',
+                registry: Optional[CollectorRegistry] = REGISTRY,
+                _labelvalues: Optional[Sequence[str]] = None) -> Counter:
+    with __counters_lock:
+        if name not in __all_counters:
+            if documentation is None:
+                raise ValueError('Documentation field is required')
+            __all_counters[name] = Counter(
+                name=name,
+                documentation=documentation,
+                labelnames=labelnames,
+                namespace=namespace,
+                subsystem=subsystem,
+                unit=unit,
+                registry=registry,
+                _labelvalues=_labelvalues
+            )
+        return __all_counters[name]
 
 def get_histogram(name: str,
                   documentation: str,
