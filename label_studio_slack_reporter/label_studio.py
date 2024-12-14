@@ -8,7 +8,7 @@ from typing import Dict, List, Tuple
 from label_studio_sdk.client import LabelStudio
 from label_studio_sdk.projects.client_ext import ProjectExt
 from label_studio_sdk.types import BaseUser
-
+from label_studio_slack_reporter.metrics import get_counter
 
 class Reporter:
     """Label Studio Report generator
@@ -26,6 +26,11 @@ class Reporter:
 
         self.__project_ids = projects
         self.__report_days = days
+        get_counter(
+            name='label_studio_report_errors',
+            documentation='Label Studio Report Generation errors',
+            labelnames=['project']
+        )
 
     def get_project_export(self, project_id: int) -> Dict:
         """Retrieves the project export
@@ -51,7 +56,13 @@ class Reporter:
         Returns:
             str: Report
         """
-        reports = [self.get_project_report(idx) for idx in self.__project_ids]
+        reports = []
+        for idx in self.__project_ids:
+            try:
+                reports.append(self.get_project_report(idx))
+            except Exception as exc:
+                get_counter('label_studio_report_errors').labels(
+                    project=idx).inc()
 
         return '\n\n'.join(reports)
 
