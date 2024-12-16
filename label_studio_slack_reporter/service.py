@@ -146,13 +146,15 @@ class Service:
         """Scheduler thread
         """
         while not self.stop_event.is_set():
+            last_run_time = dt.datetime.now()
             for job_cron, jobs in self.jobs.items():
                 if pycron.is_now(job_cron):
                     try:
                         self.__job_queue.put(jobs, timeout=30)
                     except Full:
                         self.__log.critical('Job queue full!', exc_info=True)
-            time.sleep(30)
+            next_run_time = last_run_time + dt.timedelta(minutes=1)
+            time.sleep((dt.datetime.now() - next_run_time).total_seconds())
 
 
 def main():
