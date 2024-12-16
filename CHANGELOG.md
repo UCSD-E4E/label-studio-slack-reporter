@@ -1,6 +1,19 @@
 # CHANGELOG
 
 
+## v0.2.3 (2024-12-16)
+
+### Bug Fixes
+
+- Adds logging for exception
+  ([`5b0fbe9`](https://github.com/UCSD-E4E/label-studio-slack-reporter/commit/5b0fbe9a465ddf9f9973d4dca46d4dc84250b257))
+
+### Code Style
+
+- Disables pylint warnings
+  ([`4c0d8e5`](https://github.com/UCSD-E4E/label-studio-slack-reporter/commit/4c0d8e544614feff172269fd18dc3a99fe7790e5))
+
+
 ## v0.2.2 (2024-12-15)
 
 ### Bug Fixes
