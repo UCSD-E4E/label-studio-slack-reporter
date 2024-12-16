@@ -2,13 +2,16 @@
 '''
 import datetime as dt
 import json
+import logging
 from io import BytesIO
 from typing import Dict, List, Tuple
 
 from label_studio_sdk.client import LabelStudio
 from label_studio_sdk.projects.client_ext import ProjectExt
 from label_studio_sdk.types import BaseUser
+
 from label_studio_slack_reporter.metrics import get_counter
+
 
 class Reporter:
     """Label Studio Report generator
@@ -31,6 +34,7 @@ class Reporter:
             documentation='Label Studio Report Generation errors',
             labelnames=['project']
         )
+        self.__log = logging.getLogger('Label Studio')
 
     def get_project_export(self, project_id: int) -> Dict:
         """Retrieves the project export
@@ -60,9 +64,10 @@ class Reporter:
         for idx in self.__project_ids:
             try:
                 reports.append(self.get_project_report(idx))
-            except Exception as exc:
+            except Exception as exc:  # pylint: disable=broad-exception-caught
                 get_counter('label_studio_report_errors').labels(
                     project=idx).inc()
+                self.__log.exception('Report generation failed due to %s', exc)
 
         return '\n\n'.join(reports)
 
