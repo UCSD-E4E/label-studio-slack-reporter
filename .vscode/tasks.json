@@ -5,6 +5,7 @@
             "label": "Semantic Release",
             "type": "shell",
             "command": "semantic-release version --push",
+            "problemMatcher": []
         }
     ]
 }

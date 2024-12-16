@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.2.1 (2024-12-15)
+
+### Bug Fixes
+
+- Fixes run periodicity
+  ([`a051d32`](https://github.com/UCSD-E4E/label-studio-slack-reporter/commit/a051d32c1010816bc7449cbad804c18a0887fd94))
+
+
 ## v0.2.0 (2024-12-14)
 
 ### Bug Fixes
