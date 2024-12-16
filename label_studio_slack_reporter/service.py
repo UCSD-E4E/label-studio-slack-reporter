@@ -78,6 +78,10 @@ class Service:
             documentation='Job Execution error count',
             labelnames=['job']
         )
+        get_counter(
+            name='scheduler_errors',
+            documentation='Scheduler error count'
+        )
 
     def __configure_schedule(self):
         current_tz = get_localzone()
@@ -146,15 +150,20 @@ class Service:
         """Scheduler thread
         """
         while not self.stop_event.is_set():
-            last_run_time = dt.datetime.now()
-            for job_cron, jobs in self.jobs.items():
-                if pycron.is_now(job_cron):
-                    try:
-                        self.__job_queue.put(jobs, timeout=30)
-                    except Full:
-                        self.__log.critical('Job queue full!', exc_info=True)
-            next_run_time = last_run_time + dt.timedelta(minutes=1)
-            time.sleep((dt.datetime.now() - next_run_time).total_seconds())
+            try:
+                last_run_time = dt.datetime.now()
+                for job_cron, jobs in self.jobs.items():
+                    if pycron.is_now(job_cron):
+                        try:
+                            self.__job_queue.put(jobs, timeout=30)
+                        except Full:
+                            self.__log.critical(
+                                'Job queue full!', exc_info=True)
+                next_run_time = last_run_time + dt.timedelta(minutes=1)
+                time.sleep((next_run_time - dt.datetime.now()).total_seconds())
+            except Exception:
+                self.__log.exception('Scheduler failed!')
+                get_counter(name='scheduler_errors').inc()
 
 
 def main():
