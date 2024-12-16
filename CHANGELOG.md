@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.2.2 (2024-12-15)
+
+### Bug Fixes
+
+- Fixes scheduler arithmetic
+  ([`df2f620`](https://github.com/UCSD-E4E/label-studio-slack-reporter/commit/df2f62085c2b2480097ec2eaf61ccfffdadf03e0))
+
+
 ## v0.2.1 (2024-12-15)
 
 ### Bug Fixes
