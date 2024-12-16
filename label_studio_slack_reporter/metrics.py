@@ -28,6 +28,8 @@ def get_counter(name: str,
                 unit: str = '',
                 registry: Optional[CollectorRegistry] = REGISTRY,
                 _labelvalues: Optional[Sequence[str]] = None) -> Counter:
+    # pylint: disable=too-many-positional-arguments,too-many-arguments,missing-function-docstring
+    # Mirrors prometheus API
     with __counters_lock:
         if name not in __all_counters:
             if documentation is None:

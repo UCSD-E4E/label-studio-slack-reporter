@@ -161,7 +161,7 @@ class Service:
                                 'Job queue full!', exc_info=True)
                 next_run_time = last_run_time + dt.timedelta(minutes=1)
                 time.sleep((next_run_time - dt.datetime.now()).total_seconds())
-            except Exception:
+            except Exception:  # pylint: disable=broad-exception-caught
                 self.__log.exception('Scheduler failed!')
                 get_counter(name='scheduler_errors').inc()
 
