@@ -1,8 +1,15 @@
+[prometheus]
+port = 9100
+
 [label_studio]
 key = "abcdef1234"
 url = "https://labeler.e4e.ucsd.edu"
 project_ids = [10]
 report_days = 1
+
+[api.google]
+credentials = "gcloud_credentials.json"
+token = "volumes/cache/gapp_token.json"
 
 [output.slack]
 type = "slack"
@@ -10,3 +17,12 @@ secret = "xoxb-abcdef1234"
 channel_id = "abcdef1234"
 project_ids = [10]
 schedule = "0 9 * * *"
+
+[output.email]
+type = "email"
+project_ids = [10]
+schedule = "0 9 * * *"
+to = [
+    "nthui@ucsd.edu"
+]
+subject = "UCSD E4E Label Studio Progress Report"

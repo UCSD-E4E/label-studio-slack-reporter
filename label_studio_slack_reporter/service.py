@@ -18,17 +18,19 @@ from tzlocal import get_localzone
 
 from label_studio_slack_reporter.config import configure_logging
 from label_studio_slack_reporter.label_studio import Reporter
-from label_studio_slack_reporter.metrics import (get_summary, get_counter,
+from label_studio_slack_reporter.metrics import (get_counter, get_summary,
                                                  system_monitor_thread)
-from label_studio_slack_reporter.output import AbstractOutput, SlackOutput
-
+from label_studio_slack_reporter.output import (AbstractOutput, EmailOutput,
+                                                SlackOutput)
+from label_studio_slack_reporter.gapp import GoogleAppService
 
 class Service:
     """Main service
     """
     # pylint: disable=too-many-instance-attributes
     OUTPUT_TYPE_MAPPING = {
-        'slack': SlackOutput
+        'slack': SlackOutput,
+        'email': EmailOutput
     }
 
     def __init__(self,
@@ -82,6 +84,10 @@ class Service:
             name='scheduler_errors',
             documentation='Scheduler error count'
         )
+        GoogleAppService(
+            credentials=Path(self.__config['api']['google']['credentials']),
+            token=Path(self.__config['api']['google']['token'])
+        )
 
     def __configure_schedule(self):
         current_tz = get_localzone()
@@ -127,6 +133,8 @@ class Service:
                         with self.__output_timer.labels(job=job.name).time():
                             job.execute(message=message)
                         self.__log.info('Executed %s', job.name)
+                    else:
+                        self.__log.warning('Debug mode - no output executed!')
                 except Exception:  # pylint: disable=broad-exception-caught
                     self.__log.exception('Failed to execute %s', job.name)
                     get_counter('job_execute_errors').labels(
