@@ -166,7 +166,8 @@ class Reporter:
                 count = 0
             else:
                 count = annotations_count[user.id]
-            message += f'{user.email}: {count}\n'
+            if count > 0:
+                message += f'{user.email}: {count}\n'
 
         message += f'Total: {sum(annotations_count.values())}\n'
         message += f'Estimated time to completion: {estimated_days:.1f} days\n'
