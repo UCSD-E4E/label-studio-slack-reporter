@@ -11,7 +11,7 @@
             "module": "label_studio_slack_reporter.service",
             "args": [
                 "--config",
-                "${workspaceFolder}/config.toml",
+                "${workspaceFolder}/volumes/config/config.toml",
                 "--debug"
             ]
         },
@@ -22,7 +22,7 @@
             "module": "label_studio_slack_reporter.main",
             "args": [
                 "--config",
-                "${workspaceFolder}/config.toml"
+                "${workspaceFolder}/volumes/config/config.toml"
             ]
         }
     ]
