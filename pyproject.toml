@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "label_studio_slack_reporter"
-version = "0.2.3"
+version = "0.3.0"
 description = "Label Studio Slack Reporter"
 authors = [
     "UCSD Engineers for Exploration <e4e@ucsd.edu>"

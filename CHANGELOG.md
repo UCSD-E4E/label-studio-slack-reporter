@@ -1,6 +1,19 @@
 # CHANGELOG
 
 
+## v0.3.0 (2024-12-23)
+
+### Chores
+
+- Ignores volumes
+  ([`06d015f`](https://github.com/UCSD-E4E/label-studio-slack-reporter/commit/06d015f6f95372b1ec502f3cf576942f0d07df5a))
+
+### Features
+
+- Adds email output
+  ([`1cfa93c`](https://github.com/UCSD-E4E/label-studio-slack-reporter/commit/1cfa93c706dcc56062cef805b48be58b4633ce52))
+
+
 ## v0.2.3 (2024-12-16)
 
 ### Bug Fixes
