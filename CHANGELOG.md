@@ -1,6 +1,30 @@
 # CHANGELOG
 
 
+## v0.4.0 (2024-12-23)
+
+### Chores
+
+- **deps**: Bump jinja2 from 3.1.4 to 3.1.5
+  ([`2193502`](https://github.com/UCSD-E4E/label-studio-slack-reporter/commit/2193502fa7b6dc59e436634ba54254d0e7ba5543))
+
+Bumps [jinja2](https://github.com/pallets/jinja) from 3.1.4 to 3.1.5. - [Release
+  notes](https://github.com/pallets/jinja/releases) -
+  [Changelog](https://github.com/pallets/jinja/blob/main/CHANGES.rst) -
+  [Commits](https://github.com/pallets/jinja/compare/3.1.4...3.1.5)
+
+--- updated-dependencies: - dependency-name: jinja2 dependency-type: indirect
+
+...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+### Features
+
+- Drops 0 count report
+  ([`e2c0a64`](https://github.com/UCSD-E4E/label-studio-slack-reporter/commit/e2c0a64961b84a94feb57fba30b96eaeeeb1cd6e))
+
+
 ## v0.3.0 (2024-12-23)
 
 ### Chores
