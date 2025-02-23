@@ -1,6 +1,19 @@
 # CHANGELOG
 
 
+## v0.5.0 (2025-02-22)
+
+### Code Style
+
+- Fixes pylint issues
+  ([`5e02ec7`](https://github.com/UCSD-E4E/label-studio-slack-reporter/commit/5e02ec75d4468c9a497761b20ec1b64bba6a1b9d))
+
+### Features
+
+- Upgrades label_studio_sdk, fixes snapshot timeouts
+  ([`5e7dd2e`](https://github.com/UCSD-E4E/label-studio-slack-reporter/commit/5e7dd2ef055e220d799da49adcef29b788f95b40))
+
+
 ## v0.4.0 (2024-12-23)
 
 ### Chores
