@@ -45,14 +45,22 @@ class Reporter:
         Returns:
             Dict: LabelStudio project export
         """
-        response = self.__client.projects.exports.create_export(
-            id=project_id,
-            export_type='JSON',
-            download_all_tasks=False,
-            download_resources=False
+        response = self.__client.projects.exports.create(
+            project_id=project_id
         )
-        export = json.load(BytesIO(b''.join(response)))
-        return export
+        if response.status != 'completed':
+            raise RuntimeError('Snapshot failed')
+
+        blob_iterator = self.__client.projects.exports.download(
+            project_id=project_id,
+            export_pk=response.id
+        )
+        blob = BytesIO()
+        for chunk in blob_iterator:
+            blob.write(chunk)
+        blob.seek(0)
+        return json.load(blob)
+        # return json.loads(export.json())
 
     def get_report(self) -> str:
         """Generates the report
