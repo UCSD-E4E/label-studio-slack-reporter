@@ -30,8 +30,8 @@ def create_label_studio_fixture(config: Dict) -> Reporter:
         Reporter: Test reporter
     """
     reporter = Reporter(
-        url=config['label_studio']['url'],
         api_key=config['label_studio']['key'],
+        url=config['label_studio']['url'],
         projects=config['label_studio']['project_ids'],
         days=config['label_studio']['report_days'],
     )

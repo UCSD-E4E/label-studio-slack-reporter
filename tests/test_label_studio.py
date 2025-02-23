@@ -6,6 +6,12 @@ from label_studio_slack_reporter.label_studio import Reporter
 
 
 def test_get_export(config: Dict, label_studio_fixture: Reporter):
+    """Tests running export
+
+    Args:
+        config (Dict): Config
+        label_studio_fixture (Reporter): Reporter
+    """
     export = label_studio_fixture.get_project_export(
         project_id=config['label_studio']['project_ids'][0]
     )
