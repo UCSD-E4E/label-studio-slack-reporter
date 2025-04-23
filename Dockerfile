@@ -27,6 +27,8 @@ RUN poetry install --only main
 #   We'll just copy the env and the PATH reference.
 FROM python:3.12-slim AS runtime
 
+RUN mkdir -p -m 777 /e4e/data /e4e/cache /e4e/logs /e4e/config
+
 ENV VIRTUAL_ENV=/app/.venv
 ENV PATH="/app/.venv/bin:$PATH"
 ENV E4E_DOCKER=1
