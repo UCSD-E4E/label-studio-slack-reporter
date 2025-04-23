@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.5.1 (2025-04-23)
+
+### Bug Fixes
+
+- Fixes dirs
+  ([`c8dcc69`](https://github.com/UCSD-E4E/label-studio-slack-reporter/commit/c8dcc69f556f9d7625e1857843298ff025e27d10))
+
+
 ## v0.5.0 (2025-04-23)
 
 ### Bug Fixes
