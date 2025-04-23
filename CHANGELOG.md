@@ -1,12 +1,45 @@
 # CHANGELOG
 
 
-## v0.5.0 (2025-02-22)
+## v0.5.0 (2025-04-23)
+
+### Bug Fixes
+
+- Docs: Adds docker build
+  ([`c34c31a`](https://github.com/UCSD-E4E/label-studio-slack-reporter/commit/c34c31a2587d06f4bc9750844eb1bac6061be6fb))
+
+Fix to bump tag
+
+- Merge pull request #21 from UCSD-E4E/dependabot/pip/jinja2-3.1.6
+  ([`8849442`](https://github.com/UCSD-E4E/label-studio-slack-reporter/commit/8849442656d04f96ddfce68408af478d98052f62))
+
+chore(deps): bump jinja2 from 3.1.5 to 3.1.6
+
+### Chores
+
+- **deps**: Bump jinja2 from 3.1.5 to 3.1.6
+  ([`f5862e4`](https://github.com/UCSD-E4E/label-studio-slack-reporter/commit/f5862e462b8680a24622906fb3f7face04b58568))
+
+Bumps [jinja2](https://github.com/pallets/jinja) from 3.1.5 to 3.1.6. - [Release
+  notes](https://github.com/pallets/jinja/releases) -
+  [Changelog](https://github.com/pallets/jinja/blob/main/CHANGES.rst) -
+  [Commits](https://github.com/pallets/jinja/compare/3.1.5...3.1.6)
+
+--- updated-dependencies: - dependency-name: jinja2 dependency-version: 3.1.6
+
+dependency-type: indirect ...
+
+Signed-off-by: dependabot[bot] <support@github.com>
 
 ### Code Style
 
 - Fixes pylint issues
   ([`5e02ec7`](https://github.com/UCSD-E4E/label-studio-slack-reporter/commit/5e02ec75d4468c9a497761b20ec1b64bba6a1b9d))
+
+### Continuous Integration
+
+- Fix: Fixes token
+  ([`86eef9b`](https://github.com/UCSD-E4E/label-studio-slack-reporter/commit/86eef9bdfabcbbf027639084113981652b21f870))
 
 ### Features
 
@@ -26,9 +59,7 @@ Bumps [jinja2](https://github.com/pallets/jinja) from 3.1.4 to 3.1.5. - [Release
   [Changelog](https://github.com/pallets/jinja/blob/main/CHANGES.rst) -
   [Commits](https://github.com/pallets/jinja/compare/3.1.4...3.1.5)
 
---- updated-dependencies: - dependency-name: jinja2 dependency-type: indirect
-
-...
+--- updated-dependencies: - dependency-name: jinja2 dependency-type: indirect ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
