@@ -23,8 +23,7 @@ class Reporter:
                  projects: List[int],
                  days: int):
         self.__client = LabelStudio(
-            base_url=url,
-            api_key=api_key
+            base_url=url, api_key=api_key, timeout=60 * 10  # 10 minutes
         )
 
         self.__project_ids = projects
