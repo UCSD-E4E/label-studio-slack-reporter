@@ -45,6 +45,8 @@ class Reporter:
         Returns:
             Dict: LabelStudio project export
         """
+        self.__log.debug(f"Beginning Export for Project {project_id}.")
+        
         response = self.__client.projects.exports.create(
             project_id=project_id
         )
