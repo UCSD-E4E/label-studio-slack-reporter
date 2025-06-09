@@ -29,9 +29,9 @@ class Reporter:
         self.__project_ids = projects
         self.__report_days = days
         label_studio_report_errors = get_counter(
-            name="label_studio_report_errors",
-            documentation="Label Studio Report Generation errors",
-            labelnames=["project"],
+            name='label_studio_report_errors',
+            documentation='Label Studio Report Generation errors',
+            labelnames=['project'],
         )
         label_studio_report_errors.clear()
         self.__log = logging.getLogger('Label Studio')
