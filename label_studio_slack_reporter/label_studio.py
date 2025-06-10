@@ -4,7 +4,8 @@ import datetime as dt
 import json
 import logging
 from io import BytesIO
-from typing import Dict, List, Tuple
+from threading import Lock
+from typing import Dict, List, Set, Tuple
 
 from label_studio_sdk.client import LabelStudio
 from label_studio_sdk.projects.client_ext import ProjectExt
@@ -16,6 +17,8 @@ from label_studio_slack_reporter.metrics import get_counter
 class Reporter:
     """Label Studio Report generator
     """
+    __error_counters_initialized: Set[int] = set()
+    __error_counters_initialized_lock = Lock()
 
     def __init__(self,
                  url: str,
@@ -32,8 +35,20 @@ class Reporter:
             name='label_studio_report_errors',
             documentation='Label Studio Report Generation errors',
             labelnames=['project'],
-            _labelvalues=self.__project_ids,
         )
+        for idx in self.__project_ids:
+            if idx in Reporter.__error_counters_initialized:
+                continue
+
+            with Reporter.__error_counters_initialized_lock:
+                get_counter(
+                    name='label_studio_report_errors',
+                    documentation='Label Studio Report Generation errors',
+                    labelnames=['project']
+                ).labels(project=idx).reset()
+
+                Reporter.__error_counters_initialized.update(self.__project_ids)
+
         self.__log = logging.getLogger('Label Studio')
 
     def get_project_export(self, project_id: int) -> Dict:
