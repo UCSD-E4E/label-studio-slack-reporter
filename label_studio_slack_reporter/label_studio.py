@@ -47,7 +47,7 @@ class Reporter:
                     labelnames=['project']
                 ).labels(project=idx).reset()
 
-                Reporter.__error_counters_initialized.update(self.__project_ids)
+                Reporter.__error_counters_initialized.add(idx)
 
         self.__log = logging.getLogger('Label Studio')
 
