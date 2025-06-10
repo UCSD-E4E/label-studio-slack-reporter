@@ -44,6 +44,7 @@ def get_counter(name: str,
                 registry=registry,
                 _labelvalues=_labelvalues
             )
+            __all_counters[name].reset()
         return __all_counters[name]
 
 def get_histogram(name: str,
