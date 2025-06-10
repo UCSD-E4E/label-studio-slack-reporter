@@ -44,10 +44,6 @@ def get_counter(name: str,
                 registry=registry,
                 _labelvalues=_labelvalues
             )
-            # Hack to ensure that the counter is created
-            # and reset on first access
-            __all_counters[name].inc()
-            __all_counters[name].reset()
         return __all_counters[name]
 
 def get_histogram(name: str,

@@ -32,6 +32,7 @@ class Reporter:
             name='label_studio_report_errors',
             documentation='Label Studio Report Generation errors',
             labelnames=['project'],
+            _labelvalues=self.__project_ids,
         )
         self.__log = logging.getLogger('Label Studio')
 
