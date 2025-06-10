@@ -33,7 +33,8 @@ class Reporter:
             documentation='Label Studio Report Generation errors',
             labelnames=['project'],
         )
-        label_studio_report_errors.clear()
+        for idx in self.__project_ids:
+            label_studio_report_errors.clear(project=idx)
         self.__log = logging.getLogger('Label Studio')
 
     def get_project_export(self, project_id: int) -> Dict:
